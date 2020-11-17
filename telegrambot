@@ -1,0 +1,56 @@
+#Suierkul Nurmukhammed
+#IT-2002
+#Theme-Telegram Bot (AITUdent)
+#I know that my codes are very simple but I tried my best :)
+
+import telebot
+
+from telebot import types
+
+# 1428162382:AAHfIc54a0Aw1nz1bthVOqAcsEhq_XpEisM
+
+bot = telebot.TeleBot("1428162382:AAHfIc54a0Aw1nz1bthVOqAcsEhq_XpEisM")
+
+keyboard = telebot.types.ReplyKeyboardMarkup(True)
+keyboard.row('/📚Materials📚')
+keyboard.row('/📝Formulas📝')
+keyboard.row('/📍Useful_Sites📍')
+keyboard.row('/💯Motivations💯')
+
+
+# There are some commands in the telegram bot
+
+def send(id, text):
+    bot.send_message(id, text, reply_markup=keyboard)
+
+
+# In order to reply after the /start
+
+@bot.message_handler(commands=['start'])
+def answer(message):
+    send(message.chat.id, 'Select the service📌')
+
+
+@bot.message_handler(commands=['help'])
+def answer(message):
+    send(message.chat.id, 'Sorry, but this is the educational bot🤖 \nSelect the service📌')
+
+@bot.message_handler(commands=['📚Materials📚'])
+def answer(message):
+    send(message.chat.id, 'You can download all books via this link: (also grade systems) \nhttps://yadi.sk/d/O8bFVNJxpc47ug?w=1')
+
+@bot.message_handler(commands=['📍Useful_Sites📍'])
+def answer(message):
+    send(
+message.chat.id, 'For 👨🏻‍💻C++👨🏻‍💻: \n \n1. https://www.udemy.com/ru/topic/c-plus-plus/ \n \n2. https://www.tutorialspoint.com/cplusplus/ \n \n3. https://www.programiz.com/ \n \n4. https://www.w3schools.com/cpp/cpp_pointers.asp \n \nFor 🧮Calculus🧮: \n \n1. https://www.youtube.com/channel/UCEWpbFLzoYGPfuWUMFPSaoA \n \n2. https://www.youtube.com/channel/UC8butISFwT-Wl7EV0hUK0BQ \n \nFor 📊SQL📊: \n \n1. https://www.w3schools.com/sql/default.asp \n \n2. https://livesql.oracle.com/apex/f?p=590:49:::NO:RP:: \n \n3. https://www.hackerrank.com/domains/sql?filters%5Bsubdomains%5D%5B%5D=select '
+         )
+
+@bot.message_handler(commands=['📝Formulas📝'])
+def answer(message):
+    send(message.chat.id, '🗒You can find any formula for Calculus on this site🗒: \n https://byjus.com/calculus-formulas/ \n \n📕Bonus for Discrete Math📕: \nhttps://www.dcode.fr/')
+
+@bot.message_handler(commands=['💯Motivations💯'])
+def answer(message):
+    send(message.chat.id, '\n✅ A problem is a chance for you, to do your best! \n \n✅ A little progress each day adds up to big results. \n \n✅ If you get tired learn to rest not quit! \n \n✅ Rrogramming is another fun! \n \n✅ You are not idiot, study harder! \n \n✅ .Better to live not just exist! \n \n💫And some special ones💫: \n \n -Aqsha manyzdy emes, bastysy bas aman bolsyn 😉 \n \n-Senin qolynnan bari keledi✨')
+
+
